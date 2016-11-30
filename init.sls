@@ -22,6 +22,7 @@ pia-conf:
   file.managed:
     - name: /etc/openvpn/pia.conf
     - source: salt://pia/pia-vpn.conf
+    - template: jinja
     - require:
       - pkg: openvpn
 
