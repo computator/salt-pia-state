@@ -10,6 +10,14 @@ openvpn:
     - require:
       - pkg: openvpn
 
+openvpn-systemd-reload:
+  module.wait:
+    - name: service.systemctl_reload
+    - watch:
+      - pkg: openvpn
+    - require_in:
+      - service: openvpn
+
 pia-conf:
   file.managed:
     - name: /etc/openvpn/pia.conf
